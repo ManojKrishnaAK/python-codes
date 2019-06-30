@@ -1,0 +1,130 @@
+OPEN COMMAND PROMPT IN NORMAL MODE:-
+-------------------------------------------------------------------------------------------
+Microsoft Windows [Version 6.1.7601]
+Copyright (c) 2009 Microsoft Corporation.  All rights reserved.
+
+C:\Users\Oracle>cd..
+
+C:\Users>cd..
+
+C:\>sqlplus / as sysdba
+
+SQL*Plus: Release 12.2.0.1.0 Production on Sat May 12 00:33:24 2018
+
+Copyright (c) 1982, 2016, Oracle.  All rights reserved.
+
+
+Connected to:
+Oracle Database 12c Enterprise Edition Release 12.2.0.1.0 - 64bit Production
+
+SQL> SHOW con_name;
+
+CON_NAME
+------------------------------
+CDB$ROOT
+SQL> SELECT name, con_id FROM v$pdbs;
+
+NAME
+--------------------------------------------------------------------------------
+
+    CON_ID
+----------
+PDB$SEED
+         2
+
+ORCLPDB
+         3
+
+
+SQL> SELECT name FROM v$active_services WHERE con_id=3;
+
+NAME
+----------------------------------------------------------------
+orclpdb
+
+SQL>
+
+====================================================================
+Here open "tnsnames.ora" and do the followings above.
+====================================================================
+
+NOW OPEN ANOTHER COMMAND PROMPT IN ADMINISTRATOR MODE:- 
+====================================================================
+Microsoft Windows [Version 6.1.7601]
+Copyright (c) 2009 Microsoft Corporation.  All rights reserved.
+====================================================================
+#The Listener Control utility enables you to administer listeners.
+C:\Windows\system32>lsnrctl reload
+
+LSNRCTL for 64-bit Windows: Version 12.2.0.1.0 - Production on 12-MAY-2018 00:50
+:34
+
+Copyright (c) 1991, 2016, Oracle.  All rights reserved.
+
+Connecting to (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521)))
+The command completed successfully
+
+C:\Windows\system32>sqlplus / as sysdba
+
+SQL*Plus: Release 12.2.0.1.0 Production on Sat May 12 00:51:50 2018
+
+Copyright (c) 1982, 2016, Oracle.  All rights reserved.
+
+
+Connected to:
+Oracle Database 12c Enterprise Edition Release 12.2.0.1.0 - 64bit Production
+
+SQL> SHOW con_name;
+
+CON_NAME
+------------------------------
+CDB$ROOT
+SQL> ALTER SESSION SET CONTAINER = orclpdb;
+
+Session altered.
+
+SQL> SHOW con_name;
+
+CON_NAME
+------------------------------
+ORCLPDB
+SQL> SELECT name, open_mode FROM v$pdbs;
+
+NAME
+--------------------------------------------------------------------------------
+
+OPEN_MODE
+----------
+ORCLPDB
+MOUNTED
+
+
+SQL> ALTER PLUGGABLE DATABASE open;
+
+Pluggable database altered.
+
+SQL> SELECT name,open_mode FROM v$pdbs;
+
+NAME
+--------------------------------------------------------------------------------
+
+OPEN_MODE
+----------
+ORCLPDB
+READ WRITE
+
+
+SQL> ALTER USER hr IDENTIFIED BY hr ACCOUNT UNLOCK;
+
+User altered.
+
+SQL> conn hr/hr@ORCLPDB
+Connected.
+SQL> SHOW user;
+USER is "HR"
+
+==================================================================================
+IN SQLPLUS:-
+User Name:<user name>
+Password :<password@ORCLPDB> # "@ORCLPDB" is compulsary.
+==================================================================================

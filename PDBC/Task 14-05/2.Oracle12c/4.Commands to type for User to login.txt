@@ -1,0 +1,57 @@
+Microsoft Windows [Version 6.1.7601]
+Copyright (c) 2009 Microsoft Corporation.  All rights reserved.
+
+#The Listener Control utility enables you to administer listeners.
+C:\Windows\system32>lsnrctl reload
+
+LSNRCTL for 64-bit Windows: Version 12.2.0.1.0 - Production on 13-MAY-2018 19:01
+:00
+
+Copyright (c) 1991, 2016, Oracle.  All rights reserved.
+
+Connecting to (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521)))
+The command completed successfully
+
+C:\Windows\system32>sqlplus / as sysdba
+
+SQL*Plus: Release 12.2.0.1.0 Production on Sun May 13 19:01:13 2018
+
+Copyright (c) 1982, 2016, Oracle.  All rights reserved.
+
+
+Connected to:
+Oracle Database 12c Enterprise Edition Release 12.2.0.1.0 - 64bit Production
+
+SQL> ALTER SESSION SET CONTAINER = orclpdb;
+
+Session altered.
+
+SQL> SELECT name, open_mode FROM v$pdbs;
+
+NAME
+--------------------------------------------------------------------------------
+
+OPEN_MODE
+----------
+ORCLPDB
+MOUNTED
+
+
+SQL> ALTER PLUGGABLE DATABASE open;
+
+Pluggable database altered.
+
+SQL> SELECT name,open_mode FROM v$pdbs;
+
+NAME
+--------------------------------------------------------------------------------
+
+OPEN_MODE
+----------
+ORCLPDB
+READ WRITE
+
+
+SQL> conn hr/hr@ORCLPDB
+Connected.
+SQL>

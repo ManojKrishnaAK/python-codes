@@ -1,0 +1,24 @@
+OPEN COMMAND PROMPT AND TYPE THE FOLLOWING COMMANDS:-
+
+C:\>sqlplus / as sysdba
+SQL> SHOW con_name;
+SQL> SELECT name, con_id FROM v$pdbs;
+SQL> SELECT name FROM v$active_services WHERE con_id=3;
+====================================================================
+Here open "tnsnames.ora" edit the file and save.
+====================================================================
+
+NOW OPEN COMMAND PROMPT IN ADMINISTRATIVE MODE AND TYPE THE FOLLOWING COMMANDS:-
+
+##The Listener Control utility enables you to administer listeners.
+C:\Windows\system32>lsnrctl reload
+C:\Windows\system32>sqlplus / as sysdba
+SQL> SHOW con_name;
+SQL> ALTER SESSION SET CONTAINER = orclpdb;
+SQL> SHOW con_name;
+SQL> SELECT name, open_mode FROM v$pdbs;
+SQL> ALTER PLUGGABLE DATABASE open;
+SQL> SELECT name,open_mode FROM v$pdbs;
+SQL> ALTER USER hr IDENTIFIED BY hr ACCOUNT UNLOCK;
+SQL> conn hr/hr@ORCLPDB
+SQL> SHOW user;

@@ -1,0 +1,11 @@
+#dynamic prog for accepting two values from kbd
+print(end="Enter First Value:")
+a=input()
+print(end="Enter Second Value:")
+b=input()
+c=int(a)*int(b)
+print("-"*70)
+print("val of a=",a)
+print("val of b=",b)
+print("sum=",c)
+print("-"*70)

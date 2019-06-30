@@ -1,0 +1,6 @@
+For Oracle::cx_Oracle
+For MySQL::pymysql
+
+To Install open command prompt write the following command:
+(Before you type check whether pip installed or not)
+pip install <module name>

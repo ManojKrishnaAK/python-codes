@@ -1,0 +1,10 @@
+#logical operators example--lop.py
+a=int(input("enter val of a:"))
+b=int(input("enter val of b:"))
+c=int(input("enter val of c:"))
+print("{}>{} and {}<={}={}".format(a,b,a,c,((a>b) and (a<=c))))
+print("{}<{} and {}<={}={}".format(a,b,a,c,((a<b) and (a<=c))))
+print("{}>{} or {}>={}={}".format(a,b,a,c,((a>b) or (a>=c))))
+print("{}>{} or {}!={}={}".format(a,b,a,c,((a>b) or (a!=c))))
+print("not {}>{} or {}>={}={}".format(a,b,a,c,(not((a>b) or (a>=c)))))
+print("not {}>{} and {}<={}={}".format(a,b,a,c,(not((a>b) and (a<=c)))))

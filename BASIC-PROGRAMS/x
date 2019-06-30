@@ -1,0 +1,6 @@
+print("this adv python")
+print("learn well")
+print("mongodb applications ")
+l=[]
+l.append("sathya")
+print(l)

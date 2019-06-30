@@ -1,0 +1,8 @@
+##The Listener Control utility enables you to administer listeners.
+C:\Windows\system32>lsnrctl reload
+C:\Windows\system32>sqlplus / as sysdba
+SQL> ALTER SESSION SET CONTAINER = orclpdb;
+SQL> SELECT name, open_mode FROM v$pdbs;
+SQL> ALTER PLUGGABLE DATABASE open;
+SQL> SELECT name,open_mode FROM v$pdbs;
+SQL> conn hr/hr@ORCLPDB
